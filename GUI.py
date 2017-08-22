@@ -1,6 +1,6 @@
 from tkinter import *
 from Algorithm import *
-import calendar
+from calendar import *
 
 create_table()    #the calendar table #el todo
 
@@ -29,9 +29,6 @@ for frame in (Home, AddActivity, AddCategory, EditActivity, EditCategory, Calend
 def add_or_edit(parent,pop_up):
     raise_frame(parent)
     pop_up.destroy()
-
-
-
 
 class Add:
     def __init__(self, parent):
@@ -150,18 +147,15 @@ def insert():
     This saves the data of the user and brings him back to home
     """
     list_of_days = [Mon.get(), Tue.get(), Wed.get(), Thu.get(), Fri.get(), Sat.get(), Sun.get()]
-    # number_of_day = 0
-    # list_of_calendar_day_names = calendar.day_name
-    frequency = 0
-    for i in list_of_days:
-        if i is True:
-            frequency+=1
-    # for day in list_of_days:
-    #     if day == 1:
-    #         frequency.append(list_of_calendar_day_names[number_of_day])
-    #         number_of_day += 1
+    number_of_day = 0
+    list_of_calendar_day_names = calendar.day_name
+    frequency = []
+    for day in list_of_days:
+        if day == 1:
+            frequency.append(list_of_calendar_day_names[number_of_day])
+            number_of_day += 1
     date_of_activity = "{}/{}/{}".format(Day.get(), Month.get(), Year.get())
-    if Category.get() == 'todo':
+    if Category.get() == 'Todo':
         insert_todo(NameOfActivity.get(), Category.get(), HoursFrom.get(), MinTo.get(), date_of_activity,
                     Importance.get(), frequency)
     else:
